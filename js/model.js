@@ -10,9 +10,8 @@ let model = (function() {
         let newTask;
 
         newTask = new Task(Date.now(), input, false, false);
-        console.log(data);
 
-        data.allTasks.push(newTask);
+        data.push(newTask);
 
         return newTask;
     }
@@ -28,17 +27,22 @@ let model = (function() {
         return newdate;
     }
 
-    let data = {
-        allTasks: [],
-        favorites: [],
-        deletes: []
+    function checkDoneTask(taskId) {
+        data.forEach((item) => {
+            if(Number(taskId) === item.id) {
+                item.done = !item.done;
+            }
+        });
     }
+
+    let data = []
 
     return {
         test: function() {
             console.log(data);
         },
         addTask: addTask,
-        addDate: addDate
+        addDate: addDate,
+        checkDoneTask: checkDoneTask
     }
 })();

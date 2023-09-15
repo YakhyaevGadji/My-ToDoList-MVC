@@ -3,7 +3,8 @@ let view = (function() {
     let DOMstrings = {
         form: '#form',
         input: '#input-add',
-        taskList: '#list'
+        taskList: '#list',
+        checkBoxDone: '#todolist__checkbox'
     }
 
     function getInput() {
@@ -13,9 +14,12 @@ let view = (function() {
     }
 
     function renderTaskHTML(taskObj, date) {
+        
+        const cssChecked = taskObj.done ? 'checked' : '';
+
         const taskHTML = `<li class="todolist__list-item" id="${taskObj.id}">
         <label class="todolist__label">
-            <input type="checkbox"  class="todolist__checkbox display-checkbox">
+            <input type="checkbox" data-done="done" ${cssChecked} class="todolist__checkbox display-checkbox">
             <span class="todolist__checkbox-style"></span>
      
             <div class="todolist__text">${taskObj.value}</div>
