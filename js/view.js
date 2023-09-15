@@ -12,7 +12,7 @@ let view = (function() {
         }
     }
 
-    function renderTaskHTML(taskObj) {
+    function renderTaskHTML(taskObj, date) {
         const taskHTML = `<li class="todolist__list-item" id="${taskObj.id}">
         <label class="todolist__label">
             <input type="checkbox"  class="todolist__checkbox display-checkbox">
@@ -37,7 +37,7 @@ let view = (function() {
                     </li>
                 </ul>
             </div>
-                <div class="todolist__date"></div>
+                <div class="todolist__date">${date}</div>
             </div>
         </li>`;
 

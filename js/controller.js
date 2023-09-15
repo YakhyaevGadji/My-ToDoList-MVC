@@ -14,20 +14,18 @@ let controller = (function(ctrlModel, ctrlView) {
 
         if(text.trim() !== '') {
             let newTask = ctrlModel.addTask(input.value);
-            ctrlView.renderTaskHTML(newTask);
+            ctrlView.renderTaskHTML(newTask, ctrlModel.addDate());
             ctrlView.clearInput();
+            ctrlModel.addDate();
             ctrlModel.test();
         }
         
-        
-
     }
-
-
 
     return {
         init: setEventListnere
     }
+    
 })(model, view);
 
 controller.init();

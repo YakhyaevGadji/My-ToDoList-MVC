@@ -6,17 +6,27 @@ let model = (function() {
         this.favorite = favorite
     }
 
-
     function addTask(input) {
         let newTask;
 
-        newTask = new Task(Date.now(), input, done = false, favorite = false);
+        newTask = new Task(Date.now(), input, false, false);
+        console.log(data);
 
         data.allTasks.push(newTask);
 
         return newTask;
     }
 
+    function addDate() {
+        let date = new Date();
+        let newdate, dateMonthe;
+
+        dateMonthe = date.getMonth() + 1;
+
+        newdate = date.getDate() + ':' + (date.getMonth() < 10 ? '0' : '') + dateMonthe + ':' + date.getFullYear();
+
+        return newdate;
+    }
 
     let data = {
         allTasks: [],
@@ -25,9 +35,10 @@ let model = (function() {
     }
 
     return {
-        addTask: addTask,
         test: function() {
             console.log(data);
-        }
+        },
+        addTask: addTask,
+        addDate: addDate
     }
 })();
