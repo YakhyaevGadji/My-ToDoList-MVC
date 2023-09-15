@@ -10,11 +10,16 @@ let controller = (function(ctrlModel, ctrlView) {
         event.preventDefault();
         
         let input = ctrlView.getInput();
+        let text = input.value;
+
+        if(text.trim() !== '') {
+            let newTask = ctrlModel.addTask(input.value);
+            ctrlView.renderTaskHTML(newTask);
+            ctrlView.clearInput();
+            ctrlModel.test();
+        }
         
-        let newTask = ctrlModel.addTask(input.value);
-        ctrlView.renderTaskHTML(newTask);
-        ctrlView.clearInput();
-        ctrlModel.test();
+        
 
     }
 
