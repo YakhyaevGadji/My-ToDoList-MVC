@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Karla&family=Kumbh+Sans:wght@700&family=Montserrat:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <div class="todolist">
+        <div class="todolist__header">
+            <h1>TodoList</h1>
+        </div>
+        <div class="todolist__content">
+            <ul class="todolist__menu">
+                <li class="todolist__item">
+                    <button class="todolist__btn todolist__btn--active" data-card="all">All</button>
+                </li>
+                <li class="todolist__item">
+                    <button class="todolist__btn" data-card="deleted">Deleted</button>
+                </li>
+                <li class="todolist__item">
+                    <button class="todolist__btn" data-card="favorites">Favorites</button>
+                </li>
+            </ul>
+            <form class="todolist__form">
+                <input id="input-add" type="text" class="todolist__field">
+                <button class="todolist__add" type="submit">Add</button>
+            </form>
+            <div class="todolist__filter">
+                <button class="todolist__filter-select filter-btns" data-filter="">
+                    Сначала новые
+                </button>
+                <ul class="todolist__filter-list">
+                    <li class="todolist__filter-item">
+                        <button class="todolist__filter-btn filter-btns" data-filter="new">Сначала новые</button>
+                    </li>
+                    <li class="todolist__filter-item">
+                        <button class="todolist__filter-btn filter-btns" data-filter="old">Сначала старые</button>
+                    </li>
+                </ul>
+            </div>
+            <ul class="todolist__list" id="list">
+
+            </ul>
+        </div>
+    </div>
+    <!-- <script src="./js/script.js"></script> -->
+
+    <script src="js/model.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/controller.js"></script>
+</body>
+
+</html>
