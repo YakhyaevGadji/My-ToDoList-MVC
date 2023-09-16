@@ -43,6 +43,14 @@ let model = (function() {
         });
     }
 
+    function favoriteTask(taskId) {
+        data.forEach((item) => {
+            if(item.id === Number(taskId)) {
+                item.favorite = !item.favorite;
+            }
+        });
+    }
+
     let data = []
 
     return {
@@ -52,6 +60,7 @@ let model = (function() {
         addTask: addTask,
         addDate: addDate,
         checkDoneTask: checkDoneTask,
-        deleteTask: deleteTask
+        deleteTask: deleteTask,
+        favoriteTask: favoriteTask
     }
 })();

@@ -20,8 +20,9 @@ let view = (function() {
     function renderTaskHTML(taskObj, date) {
         
         const cssChecked = taskObj.done ? 'checked' : '';
+        const cssFavorite = taskObj.done ? 'todolist__list-item--favorites' : '';
 
-        const taskHTML = `<li class="todolist__list-item" id="${taskObj.id}">
+        const taskHTML = `<li class="todolist__list-item ${cssFavorite}" id="${taskObj.id}">
         <label class="todolist__label">
             <input type="checkbox" data-done="done" ${cssChecked} class="todolist__checkbox display-checkbox">
             <span class="todolist__checkbox-style"></span>
@@ -66,6 +67,11 @@ let view = (function() {
         document.querySelector(DOMstrings.filterList).classList.toggle("todolist__filter-list--active");
     }
 
+    function toggleFavorite(itemId) {
+        let toggleElem = document.getElementById(itemId);
+        toggleElem.classList.toggle('todolist__list-item--favorites');
+    }
+
     function removeTask(item) {
         item.remove();
     }
@@ -77,6 +83,7 @@ let view = (function() {
         clearInput: clearInput,
         toggleSetting: toggleSetting,
         toggleFilter: toggleFilter,
-        removeTask: removeTask
+        removeTask: removeTask,
+        toggleFavorite: toggleFavorite
     }
 })();

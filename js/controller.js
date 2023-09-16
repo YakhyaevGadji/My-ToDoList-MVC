@@ -50,6 +50,10 @@ let controller = (function(ctrlModel, ctrlView) {
             ctrlModel.deleteTask(item.id);
             ctrlView.removeTask(item);
             ctrlModel.test();
+        }else if(event.target.dataset.settings === 'favorite') {
+            ctrlModel.favoriteTask(item.id);
+            ctrlView.toggleFavorite(item.id);
+            ctrlModel.test();
         }
     }
 
