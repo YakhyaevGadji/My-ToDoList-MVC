@@ -4,7 +4,11 @@ let view = (function() {
         form: '#form',
         input: '#input-add',
         taskList: '#list',
-        checkBoxDone: '#todolist__checkbox'
+        checkBoxDone: '#todolist__checkbox',
+        setting: '.todolist__settings-btn',
+        settingList: '.todolist__settings-list',
+        filterList: '.todolist__filter-list',
+        filter: '.todolist__filter-select'
     }
 
     function getInput() {
@@ -27,7 +31,7 @@ let view = (function() {
         <input type="text" class="todolist__change-text">
         <div class="todolist__func">
             <div class="todolist__settings">
-                <button class="todolist__settings-btn">Настроить</button>
+                <button class="todolist__settings-btn" data-setting>Настроить</button>
                 <ul class="todolist__settings-list">
                     <li class="todolist__settings-item">
                         <button data-settings="favorite"
@@ -54,12 +58,25 @@ let view = (function() {
         input.value = '';
     }
 
+    function toggleSetting(elem) {
+        elem.classList.toggle('todolist__settings-btn--active');
+    }
 
-    
+    function toggleFilter() {
+        document.querySelector(DOMstrings.filterList).classList.toggle("todolist__filter-list--active");
+    }
+
+    function removeTask(item) {
+        item.remove();
+    }
+
     return {
         getInput: getInput,
         DOMstrings: DOMstrings,
         renderTaskHTML: renderTaskHTML,
-        clearInput: clearInput
+        clearInput: clearInput,
+        toggleSetting: toggleSetting,
+        toggleFilter: toggleFilter,
+        removeTask: removeTask
     }
 })();

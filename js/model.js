@@ -1,15 +1,16 @@
 let model = (function() {
-    let Task = function(id, value, done, favorite) {
+    let Task = function(id, value, done, favorite, deleted) {
         this.id = id,
         this.value = value,
         this.done = done,
-        this.favorite = favorite
+        this.favorite = favorite,
+        this.deleted = deleted
     }
 
     function addTask(input) {
         let newTask;
 
-        newTask = new Task(Date.now(), input, false, false);
+        newTask = new Task(Date.now(), input, false, false, false);
 
         data.push(newTask);
 
@@ -34,6 +35,13 @@ let model = (function() {
             }
         });
     }
+    function deleteTask(itemId) {
+        data.forEach((item) => {
+            if(item.id === Number(itemId)) {
+                item.deleted = true;
+            }
+        });
+    }
 
     let data = []
 
@@ -43,6 +51,7 @@ let model = (function() {
         },
         addTask: addTask,
         addDate: addDate,
-        checkDoneTask: checkDoneTask
+        checkDoneTask: checkDoneTask,
+        deleteTask: deleteTask
     }
 })();
