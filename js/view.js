@@ -17,7 +17,7 @@ let view = (function() {
         }
     }
 
-    function renderTaskHTML(taskObj, date) {
+    function renderTaskHTML(taskObj) {
         
         const cssChecked = taskObj.done ? 'checked' : '';
         const cssFavorite = taskObj.done ? 'todolist__list-item--favorites' : '';
@@ -46,7 +46,7 @@ let view = (function() {
                     </li>
                 </ul>
             </div>
-                <div class="todolist__date">${date}</div>
+                <div class="todolist__date">${taskObj.date}</div>
             </div>
         </li>`;
 
@@ -91,6 +91,18 @@ let view = (function() {
         
     }
 
+    function outputFilter(filters, date) {
+        filters.forEach((item) => {
+            renderTaskHTML(item, date);
+        });
+        
+    }
+
+    function removeElementsInList() {
+        document.querySelector(DOMstrings.taskList).innerHTML = "";
+    }
+    
+
     return {
         getInput: getInput,
         DOMstrings: DOMstrings,
@@ -100,6 +112,8 @@ let view = (function() {
         toggleFilter: toggleFilter,
         removeTask: removeTask,
         toggleFavorite: toggleFavorite,
-        changeTask: changeTask
+        changeTask: changeTask,
+        outputFilter: outputFilter,
+        removeElementsInList: removeElementsInList
     }
 })();

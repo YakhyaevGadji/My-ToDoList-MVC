@@ -1,8 +1,9 @@
 let model = (function() {
-    let Task = function(id, value, done, favorite, deleted) {
+    let Task = function(id, value, done, date, favorite, deleted) {
         this.id = id,
         this.value = value,
         this.done = done,
+        this.date = date,
         this.favorite = favorite,
         this.deleted = deleted
     }
@@ -10,7 +11,7 @@ let model = (function() {
     function addTask(input) {
         let newTask;
 
-        newTask = new Task(Date.now(), input, false, false, false);
+        newTask = new Task(Date.now(), input, false, addDate(), false, false,);
 
         data.push(newTask);
 
@@ -58,8 +59,21 @@ let model = (function() {
                 item.value = newText;
             }
         })
-        console.log(data);
     }
+
+    function renderFilter(type) {
+        let filterSort = [];
+        
+        if(type == 'new') {
+            filterSort = data.sort((a, b) => a.id - b.id);
+        }else if(type === 'old') {
+            filterSort = data.sort((a, b) => b.id - a.id);
+        }
+
+        return filterSort;
+    }
+    // data.sort((a, b) => a.id - b.id); new
+    // newData = data.sort((a, b) => b.id - a.id); old
 
     let data = []
 
@@ -72,6 +86,7 @@ let model = (function() {
         checkDoneTask: checkDoneTask,
         deleteTask: deleteTask,
         favoriteTask: favoriteTask,
-        changeTask: changeTask
+        changeTask: changeTask,
+        renderFilter: renderFilter
     }
 })();

@@ -7,7 +7,8 @@ let controller = (function(ctrlModel, ctrlView) {
         document.querySelector(DOMelem.taskList).addEventListener('click', checkBoxDone);
         document.querySelector(DOMelem.taskList).addEventListener('click', addSetting);
         document.querySelector(DOMelem.filter).addEventListener('click', addFilter);
-        document.querySelector(DOMelem.taskList).addEventListener('click', deletAndFavoriteAndChange)
+        document.querySelector(DOMelem.taskList).addEventListener('click', deletAndFavoriteAndChange);
+        document.querySelector(DOMelem.filterList).addEventListener('click', outputFilter);
     }
 
     function addTask(event) {
@@ -58,6 +59,18 @@ let controller = (function(ctrlModel, ctrlView) {
             let taskNewText = ctrlView.changeTask(item);
             ctrlModel.changeTask(item, taskNewText);
         }
+    }
+
+    function outputFilter(event) {
+        ctrlView.removeElementsInList();
+        if(event.target.dataset.filter === 'new') {
+            ctrlView.outputFilter(ctrlModel.renderFilter('new'), ctrlModel.addDate());
+            ctrlModel.test();
+        }else if(event.target.dataset.filter === 'old') {
+            ctrlView.outputFilter(ctrlModel.renderFilter('old'));
+            ctrlModel.test();
+        }
+       
     }
 
     return {
