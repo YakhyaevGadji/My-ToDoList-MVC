@@ -54,6 +54,9 @@ let controller = (function(ctrlModel, ctrlView) {
             ctrlModel.favoriteTask(item.id);
             ctrlView.toggleFavorite(item.id);
             ctrlModel.test();
+        }else if(event.target.dataset.settings === 'change') {
+            let taskNewText = ctrlView.changeTask(item);
+            ctrlModel.changeTask(item, taskNewText);
         }
     }
 

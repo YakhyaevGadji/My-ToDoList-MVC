@@ -76,6 +76,21 @@ let view = (function() {
         item.remove();
     }
 
+    function changeTask(item) {
+        item.classList.toggle('todolist__list-item--change');
+        let taskText = item.querySelector('.todolist__text');
+        let input = item.querySelector('[type="text"]');
+        input.focus();
+        if(item.classList[1] == 'todolist__list-item--change') {
+            input.value = taskText.textContent;
+            
+        }else {
+            taskText.textContent = input.value;
+            return taskText.textContent;
+        }
+        
+    }
+
     return {
         getInput: getInput,
         DOMstrings: DOMstrings,
@@ -84,6 +99,7 @@ let view = (function() {
         toggleSetting: toggleSetting,
         toggleFilter: toggleFilter,
         removeTask: removeTask,
-        toggleFavorite: toggleFavorite
+        toggleFavorite: toggleFavorite,
+        changeTask: changeTask
     }
 })();

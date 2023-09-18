@@ -51,6 +51,16 @@ let model = (function() {
         });
     }
 
+    function changeTask(task, newText) {
+        data.forEach((item) => {
+            if(item.id === Number(task.id)) {
+                item.change = true;
+                item.value = newText;
+            }
+        })
+        console.log(data);
+    }
+
     let data = []
 
     return {
@@ -61,6 +71,7 @@ let model = (function() {
         addDate: addDate,
         checkDoneTask: checkDoneTask,
         deleteTask: deleteTask,
-        favoriteTask: favoriteTask
+        favoriteTask: favoriteTask,
+        changeTask: changeTask
     }
 })();
